@@ -3,6 +3,7 @@
 <head>
   <title>BusStopApp</title>
   <script src= "http://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
   <script src="busController.js"></script>
   <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
 </head>
@@ -13,20 +14,15 @@
     <div class="row">
       <div class="col-sm-4">
         <div class="form-group">
-          <label for="sel1">Select list:</label>
-          <select class="form-control" id="sel1">
-            <option>25</option>
-            <option>24</option>
-            <option>26</option>
-            <option>27</option>
-          </select>
+          <label for="usr">BusNumber:</label>
+          <input type="text" class="form-control" id="usr" value="25">
         </div>
       </div>
       <div class="col-sm-8"></div>
     </div>
 
     <div id="insertPoint"></div>
-    
+
 
     <div ng-app="myApp" ng-controller="busCtrl">
       <ul>
