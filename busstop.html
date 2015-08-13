@@ -10,13 +10,9 @@
 <div class="container">
   <body>
     <h1>The Bus Stop!</h1>
-
+    <h3>Enter your bus number in the text box and press "GetStops"</h3>
+    <p>This application is picking up live stops data, not planned stops</p>
     <div class="row">
-      <div class="col-sm-2">
-        <div class="form-group">
-          <h3>Bus Number:</h3>
-        </div>
-      </div>
       <div class="col-sm-3">
         <div class="form-group">
           <!-- <label for="usr">BusNumber:</label>  -->
@@ -32,16 +28,20 @@
 
     <div id="insertPoint"></div>
 
-
     <div ng-app="myApp" ng-controller="busCtrl">
-      <ul>
-        <li ng-repeat="x in names">
-          {{ x.vehicleId + ', ' + names.stationName }}
-        </li>
-      </ul>
-      <p id="station"></p>
+          <ul>
+            <li ng-repeat="x in names">
+              {{ x.vehicleId + ', ' + names.stationName }}
+            </li>
+          </ul>
+          <p id="station"></p>
 
-    </div>
+        </div>
 
-  </body>
-  </html>
+
+
+
+  </div>
+
+</body>
+</html>

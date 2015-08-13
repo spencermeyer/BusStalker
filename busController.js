@@ -34,6 +34,3 @@ app.controller('busCtrl', function($scope, $http) {
   console.log(response)});
 });
 
-
-
-
