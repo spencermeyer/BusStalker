@@ -22,7 +22,7 @@ app.controller('busCtrl', function($scope, $http) {
     console.log("and this is the success function callback");
 
     for (i=0; i<response.length; i++) {
-      $("#station").append('<div class="row"<div class="col-sm-3"><div class="form-group"><p>stuff here</p></div></div><div class="col-sm-4"><div class="form-group"><p>more stuff</p></div></div></div>');
+      $("#station").append('<div class="row"<div class="col-sm-3"><div class="form-group"><p>'+response[i].stationName+'</p></div></div><div class="col-sm-4"><div class="form-group"><p>'+response[i].vehicleId+'</p></div></div></div>');
     }
 
 
