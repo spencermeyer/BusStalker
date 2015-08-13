@@ -6,11 +6,11 @@ $( document ).ready(function() {
   console.log("and the selected bus is " + busSelected);
   console.log( "ready!" );
   $( "#clickBus1" ).click(function() {
-  console.log("Handler for busSelected.click() called." );
+    console.log("Handler for busSelected.click() called." );
+    busSelected = document.getElementById("usr").value;
+    console.log("Bus selected is "+busSelected);
   });
 });
-
-// check the on click action
 
 
 //  This section gets the data from TFL's JSON feed
