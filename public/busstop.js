@@ -4,6 +4,7 @@ $( document ).ready(function() {
 busSelected = document.getElementById("usr").value;
 console.log("and the selected bus is " + busSelected);
 console.log( "ready!" );
+
 $( "#clickBus1" ).click(function() {
   console.log("Handler for busSelected.click() called." );
   busSelected = document.getElementById("usr").value;
@@ -11,19 +12,24 @@ $( "#clickBus1" ).click(function() {
   busUrl="https://api.tfl.gov.uk/line/"+busSelected+"/arrivals";
   console.log("and URL is",busUrl);
 
-
-
-  $("#station").append('<select><option value="mercedes">Merc</option><option value="bmw">bmw</option></select>');
-
-
-
   $.getJSON(busUrl, function(data){
     console.log("ran the ajax function");
     // console.log (data);
+
+    // Here I create the string of html for appending as an option list
+    // using the station names in data from TFL then append it and 
+    // ajax it into the view.
+    appendHtmlString='<select>'
+    for (i=0; i<data.length; i++) {
+      appendHtmlString = appendHtmlString + '<option value="'+data[i].stationName + '">' + data[i].stationName + '</option>';
+    }
+    appendHtmlString = appendHtmlString + '</select>'
+    $("#station").append(appendHtmlString);
+
     for (i=0; i<data.length; i++) {
       $("#station").append('<div class="row"><div class="col-sm-3"><div class="form-group"><p>'+data[i].stationName+'</p></div></div><div class="col-sm-2"><div class="form-group"><p>'+data[i].vehicleId+'</p></div></div><div class="col-sm-4"><div class="form-group"><p>'+data[i].towards+'</p></div></div><div class="col-sm-2"><div class="form-group"><p>'+data[i].timeToStation+'</p></div></div>     </div>');
-   }
- });
+    }
+  });
 
 });
 
