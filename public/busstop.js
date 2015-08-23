@@ -4,6 +4,7 @@ $( document ).ready(function() {
 busSelected = document.getElementById("usr").value;
 console.log("and the selected bus is " + busSelected);
 console.log( "ready!" );
+busStopsArray=[];
 
 $( "#clickBus1" ).click(function() {
   console.log("Handler for busSelected.click() called." );
@@ -19,9 +20,14 @@ $( "#clickBus1" ).click(function() {
     // Here I create the string of html for appending as an option list
     // using the station names in data from TFL then append it and 
     // ajax it into the view.
-    appendHtmlString='<select>'
+    appendHtmlString='<select id="stationName">'
     for (i=0; i<data.length; i++) {
-      appendHtmlString = appendHtmlString + '<option value="'+data[i].stationName + '">' + data[i].stationName + '</option>';
+      if(($.inArray(data[i].stationName, busStopsArray))>0){
+        // console.log("not adding");
+      }else{
+        busStopsArray.push(data[i].stationName);
+        appendHtmlString = appendHtmlString + '<option value="'+data[i].stationName + '">' + data[i].stationName + '</option>';
+      }
     }
     appendHtmlString = appendHtmlString + '</select>'
     $("#station").append(appendHtmlString);
@@ -32,9 +38,6 @@ $( "#clickBus1" ).click(function() {
   });
 
 });
-
-
-
 
 
 
