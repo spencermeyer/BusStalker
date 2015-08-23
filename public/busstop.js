@@ -37,9 +37,15 @@ $( "#clickBus1" ).click(function() {
     }
   });
 
+  
+
+
 });
 
-
+// Now trying to attach an event listener to the new drop down box
+$('#stationName').on('change', function() {
+  console.log("select box change detect" ); // this.value or $(this).val()
+});
 
 
 
