@@ -1,0 +1,22 @@
+{
+  "name": "busstop",
+  "version": "1.0.0",
+  "description": "bus stop api app",
+  "main": "busController.js",
+  "dependencies": {
+    "express": "~4.7.2",
+    "morgan"     : "~1.2.2",
+    "body-parser": "~1.5.2",
+    "method-override": "~2.1.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/spencermeyer/API_Example_TFL.git"
+  },
+  "author": "spencermeyer",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/spencermeyer/API_Example_TFL/issues"
+  },
+  "homepage": "http:/public/busstop.html"
+}

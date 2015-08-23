@@ -20,6 +20,7 @@ app.get('*', function(req, res) {
     res.sendfile('./public/busstop.html'); // load the single view file (angular will handle the page changes on the front-end)
 });
 
+
 // listen (start app with node busController.js)
 app.listen(8080);
 console.log("App listening on port 8080");
