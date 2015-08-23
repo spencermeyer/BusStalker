@@ -10,17 +10,20 @@ $( "#clickBus1" ).click(function() {
   console.log("Bus selected is "+busSelected);
   busUrl="https://api.tfl.gov.uk/line/"+busSelected+"/arrivals";
   console.log("and URL is",busUrl);
+
+
+
+  $("#station").append('<select><option value="mercedes">Merc</option><option value="bmw">bmw</option></select>');
+
+
+
   $.getJSON(busUrl, function(data){
     console.log("ran the ajax function");
-    console.log (data);
+    // console.log (data);
     for (i=0; i<data.length; i++) {
-     $("#station").append('<div class="row"><div class="col-sm-3"><div class="form-group"><p>'+data[i].stationName+'</p></div></div><div class="col-sm-2"><div class="form-group"><p>'+data[i].vehicleId+'</p></div></div><div class="col-sm-4"><div class="form-group"><p>'+data[i].towards+'</p></div></div><div class="col-sm-2"><div class="form-group"><p>'+data[i].timeToStation+'</p></div></div>     </div>');
+      $("#station").append('<div class="row"><div class="col-sm-3"><div class="form-group"><p>'+data[i].stationName+'</p></div></div><div class="col-sm-2"><div class="form-group"><p>'+data[i].vehicleId+'</p></div></div><div class="col-sm-4"><div class="form-group"><p>'+data[i].towards+'</p></div></div><div class="col-sm-2"><div class="form-group"><p>'+data[i].timeToStation+'</p></div></div>     </div>');
    }
  });
-
-
-
-
 
 });
 
