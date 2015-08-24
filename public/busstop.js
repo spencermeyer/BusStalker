@@ -20,7 +20,7 @@ $( "#clickBus1" ).click(function() {
     // Here I create the string of html for appending as an option list
     // using the station names in data from TFL then append it and 
     // ajax it into the view.
-    appendHtmlString='<select id="stationName">'
+    appendHtmlString='<select id="stationSelector">'
     for (i=0; i<data.length; i++) {
       if(($.inArray(data[i].stationName, busStopsArray))>0){
         // console.log("not adding");
@@ -35,17 +35,23 @@ $( "#clickBus1" ).click(function() {
     for (i=0; i<data.length; i++) {
       $("#station").append('<div class="row"><div class="col-sm-3"><div class="form-group"><p>'+data[i].stationName+'</p></div></div><div class="col-sm-2"><div class="form-group"><p>'+data[i].vehicleId+'</p></div></div><div class="col-sm-4"><div class="form-group"><p>'+data[i].towards+'</p></div></div><div class="col-sm-2"><div class="form-group"><p>'+data[i].timeToStation+'</p></div></div>     </div>');
     }
+
+      // Now trying to attach an event listener to the new drop down box
+      $('#stationSelector').on('change', function() {
+        console.log("select box change detect" ); // this.value or $(this).val()
+        // now to customise the AJAX of the busstops for a specific stop
+
+      });
+
+
+
+
+    //the end of the click handler is here.
   });
 
-  
-
-
 });
 
-// Now trying to attach an event listener to the new drop down box
-$('#stationName').on('change', function() {
-  console.log("select box change detect" ); // this.value or $(this).val()
-});
+
 
 
 
