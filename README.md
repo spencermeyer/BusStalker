@@ -6,3 +6,4 @@ Live data is arriving - just select a bus number, click the button and see the A
 The stops data, vehicle id plate and time to stop is AJAXed to the view.
 There are several hundred data sets streamed each time.  When the button is clicked, it creates a drop down menu to select your stop and I have arranged it so that only unique values appear as this drop down box is created from the AJAX data, and the box is AJAXed into the view.
 
+This application can be seen online at:  http://fast-plains-9477.herokuapp.com
