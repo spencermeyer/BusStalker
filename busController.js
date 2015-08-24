@@ -21,8 +21,8 @@ app.get('*', function(req, res) {
 });
 
 // listen (start app with node busController.js)
-app.listen(5000);
-console.log("App listening on port 5000");
+app.listen(process.env.PORT || 5000);
+console.log("App listening on port 5000 or Heroku env port");
 
 
 
