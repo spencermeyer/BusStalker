@@ -14,7 +14,7 @@ $( "#clickBus1" ).click(function() {
   console.log("and URL is",busUrl);
 
   $.getJSON(busUrl, function(data){
-    console.log("ran the ajax function");
+    // console.log("ran the ajax function");
     // console.log (data);
 
     // Here I create the string of html for appending as an option list
