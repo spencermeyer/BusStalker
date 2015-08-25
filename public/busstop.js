@@ -42,7 +42,7 @@ $( "#clickBus1" ).click(function() {
 
         // now to customise the AJAX of the busstops for a specific stop
         for (i=0; i<data.length; i++) {
-          if(data[i].towards == myStation){
+          if(data[i].stationName == myStation){
             $("#station").append('<div class="row"><div class="col-sm-3"><div class="form-group"><p>'+data[i].stationName+'</p></div></div><div class="col-sm-2"><div class="form-group"><p>'+data[i].vehicleId+'</p></div></div><div class="col-sm-4"><div class="form-group"><p>'+data[i].towards+'</p></div></div><div class="col-sm-2"><div class="form-group"><p>'+parseInt((data[i].timeToStation)/60)+'</p></div></div>     </div>');
             }
         }
