@@ -22,11 +22,11 @@ $( "#clickBus1" ).click(function() {
     // ajax it into the view.
     appendHtmlString='<select id="stationSelector">'
     for (i=0; i<data.length; i++) {
-      if(($.inArray(data[i].stationName, busStopsArray))>0){
+      if(($.inArray(data[i].towards, busStopsArray))>0){
         // console.log("not adding");
       }else{
-        busStopsArray.push(data[i].stationName);
-        appendHtmlString = appendHtmlString + '<option value="'+data[i].stationName + '">' + data[i].stationName + '</option>';
+        busStopsArray.push(data[i].towards);
+        appendHtmlString = appendHtmlString + '<option value="'+data[i].towards + '">' + data[i].towards + '</option>';
       }
     }
     appendHtmlString = appendHtmlString + '</select>'
@@ -42,7 +42,7 @@ $( "#clickBus1" ).click(function() {
 
         // now to customise the AJAX of the busstops for a specific stop
         for (i=0; i<data.length; i++) {
-          if(data[i].stationName == myStation){
+          if(data[i].towards == myStation){
             $("#station").append('<div class="row"><div class="col-sm-3"><div class="form-group"><p>'+data[i].stationName+'</p></div></div><div class="col-sm-2"><div class="form-group"><p>'+data[i].vehicleId+'</p></div></div><div class="col-sm-4"><div class="form-group"><p>'+data[i].towards+'</p></div></div><div class="col-sm-2"><div class="form-group"><p>'+parseInt((data[i].timeToStation)/60)+'</p></div></div>     </div>');
             }
         }
