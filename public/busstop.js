@@ -14,13 +14,10 @@ $( "#clickBus1" ).click(function() {
   console.log("and URL is",busUrl);
 
   $.getJSON(busUrl, function(data){
-    // console.log("ran the ajax function");
-    // console.log (data);
-
     // Here I create the string of html for appending as an option list
     // using the station names in data from TFL then append it and 
     // ajax it into the view.
-    appendHtmlString='<select id="stationSelector">'
+    appendHtmlString='<div class="row"><div class="col-sm-3"><select class="form-control" id="stationSelector">'
     for (i=0; i<data.length; i++) {
       if(($.inArray(data[i].towards, busStopsArray))>0){
         // console.log("not adding");
@@ -29,7 +26,7 @@ $( "#clickBus1" ).click(function() {
         appendHtmlString = appendHtmlString + '<option value="'+data[i].towards + '">' + data[i].towards + '</option>';
       }
     }
-    appendHtmlString = appendHtmlString + '</select>'
+    appendHtmlString = appendHtmlString + '</select></div></div>'
     $("#station").append(appendHtmlString);
 
 
@@ -38,13 +35,13 @@ $( "#clickBus1" ).click(function() {
         console.log("select box change detect" );
         myStation = this.value;
         // AJAX in the table title
-        $("#station").append('<div class="row"><div class="col-sm-3"><div class="form-group"><p><b>StationName</p></div></div><div class="col-sm-2"><div class="form-group"><p>VehicleId</p></div></div><div class="col-sm-4"><div class="form-group"><p>Towards</p></div></div><div class="col-sm-2"><div class="form-group"><p>Time To Station (mins)</b></p></div></div>     </div>');
+        $("#station").append('<div class="row"><div class="col-sm-2"><div class="form-group"><p><b>StationName</p></div></div><div class="col-sm-1"><div class="form-group"><p>VehicleId</p></div></div><div class="col-sm-2"><div class="form-group"><p>Towards</p></div></div><div class="col-sm-2"><div class="form-group"><p>Time To Station (mins)</b></p></div></div>     </div>');
 
         // now to customise the AJAX of the busstops for a specific stop
         
         var results = data;  // convert JSON to an object for sorting
         results.sort(function(a,b){
-            return a.timeToStation-b.timeToStation;
+          return a.timeToStation-b.timeToStation;
         });
 
         var linesCount = 0;
@@ -52,10 +49,10 @@ $( "#clickBus1" ).click(function() {
         for (i=0; i<results.length; i++) {
           if(results[i].towards == myStation){
             if(linesCount<6){
-              $("#station").append('<div class="row"><div class="col-sm-3"><div class="form-group"><p>'+results[i].stationName+'</p></div></div><div class="col-sm-2"><div class="form-group"><p>'+results[i].vehicleId+'</p></div></div><div class="col-sm-4"><div class="form-group"><p>'+results[i].towards+'</p></div></div><div class="col-sm-2"><div class="form-group"><p>'+parseInt((results[i].timeToStation)/60)+'</p></div></div>     </div>');
+              $("#station").append('<div class="row"><div class="col-sm-2"><div class="form-group"><p>'+results[i].stationName+'</p></div></div><div class="col-sm-1"><div class="form-group"><p>'+results[i].vehicleId+'</p></div></div><div class="col-sm-2"><div class="form-group"><p>'+results[i].towards+'</p></div></div><div class="col-sm-2"><div class="form-group"><p>'+parseInt((results[i].timeToStation)/60)+'</p></div></div>     </div>');
               linesCount+=1;
-              }
             }
+          }
         }
         // the end of the selector box listener is here.
       });
