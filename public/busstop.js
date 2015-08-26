@@ -41,26 +41,20 @@ $( "#clickBus1" ).click(function() {
         $("#station").append('<div class="row"><div class="col-sm-3"><div class="form-group"><p><b>StationName</p></div></div><div class="col-sm-2"><div class="form-group"><p>VehicleId</p></div></div><div class="col-sm-4"><div class="form-group"><p>Towards</p></div></div><div class="col-sm-2"><div class="form-group"><p>Time To Station (mins)</b></p></div></div>     </div>');
 
         // now to customise the AJAX of the busstops for a specific stop
-        //  *** here want to customise **
-
-        // writing this in git branch sort
-        console.log(data);
-        var dat = eval(data);
-
-        data.sort(function(a,b){
-          if(a.attributes.timeToStation == b.attributes.timeToStation)
-            return 0;
-          if(a.attributes.timeToStation < b.attributes.timeToStation)
-            return -1;
-          if(a.attributes.timeToStation < b.attributes.timeToStation)
-            return 1;
+        
+        var results = data;  // convert JSON to an object for sorting
+        results.sort(function(a,b){
+            return a.timeToStation-b.timeToStation;
         });
-        // console.log(data);
 
+        var linesCount = 0;
 
-        for (i=0; i<data.length; i++) {
-          if(data[i].towards == myStation){
-            $("#station").append('<div class="row"><div class="col-sm-3"><div class="form-group"><p>'+data[i].stationName+'</p></div></div><div class="col-sm-2"><div class="form-group"><p>'+data[i].vehicleId+'</p></div></div><div class="col-sm-4"><div class="form-group"><p>'+data[i].towards+'</p></div></div><div class="col-sm-2"><div class="form-group"><p>'+parseInt((data[i].timeToStation)/60)+'</p></div></div>     </div>');
+        for (i=0; i<results.length; i++) {
+          if(results[i].towards == myStation){
+            if(linesCount<6){
+              $("#station").append('<div class="row"><div class="col-sm-3"><div class="form-group"><p>'+results[i].stationName+'</p></div></div><div class="col-sm-2"><div class="form-group"><p>'+results[i].vehicleId+'</p></div></div><div class="col-sm-4"><div class="form-group"><p>'+results[i].towards+'</p></div></div><div class="col-sm-2"><div class="form-group"><p>'+parseInt((results[i].timeToStation)/60)+'</p></div></div>     </div>');
+              linesCount+=1;
+              }
             }
         }
         // the end of the selector box listener is here.
