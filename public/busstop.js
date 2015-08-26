@@ -33,14 +33,31 @@ $( "#clickBus1" ).click(function() {
     $("#station").append(appendHtmlString);
 
 
-      // Now trying to attach an event listener to the new drop down box
+      // Now attach an event listener to the new drop down box
       $('#stationSelector').on('change', function() {
-        console.log("select box change detect" ); // this.value or $(this).val()
+        console.log("select box change detect" );
         myStation = this.value;
         // AJAX in the table title
         $("#station").append('<div class="row"><div class="col-sm-3"><div class="form-group"><p><b>StationName</p></div></div><div class="col-sm-2"><div class="form-group"><p>VehicleId</p></div></div><div class="col-sm-4"><div class="form-group"><p>Towards</p></div></div><div class="col-sm-2"><div class="form-group"><p>Time To Station (mins)</b></p></div></div>     </div>');
 
         // now to customise the AJAX of the busstops for a specific stop
+        //  *** here want to customise **
+
+        // writing this in git branch sort
+        console.log(data);
+        var dat = eval(data);
+
+        data.sort(function(a,b){
+          if(a.attributes.timeToStation == b.attributes.timeToStation)
+            return 0;
+          if(a.attributes.timeToStation < b.attributes.timeToStation)
+            return -1;
+          if(a.attributes.timeToStation < b.attributes.timeToStation)
+            return 1;
+        });
+        // console.log(data);
+
+
         for (i=0; i<data.length; i++) {
           if(data[i].towards == myStation){
             $("#station").append('<div class="row"><div class="col-sm-3"><div class="form-group"><p>'+data[i].stationName+'</p></div></div><div class="col-sm-2"><div class="form-group"><p>'+data[i].vehicleId+'</p></div></div><div class="col-sm-4"><div class="form-group"><p>'+data[i].towards+'</p></div></div><div class="col-sm-2"><div class="form-group"><p>'+parseInt((data[i].timeToStation)/60)+'</p></div></div>     </div>');
@@ -52,10 +69,6 @@ $( "#clickBus1" ).click(function() {
   });
 
 });
-
-
-
-
 
 });
 
