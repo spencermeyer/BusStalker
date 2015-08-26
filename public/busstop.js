@@ -29,21 +29,20 @@ $( "#clickBus1" ).click(function() {
     appendHtmlString = appendHtmlString + '</select></div></div>'
     $("#station").append(appendHtmlString);
 
-
       // Now attach an event listener to the new drop down box
       $('#stationSelector').on('change', function() {
         console.log("select box change detect" );
         myStation = this.value;
         // AJAX in the table title
+        $("#station").append('<p></p>');
         $("#station").append('<div class="row"><div class="col-sm-2"><div class="form-group"><p><b>StationName</p></div></div><div class="col-sm-1"><div class="form-group"><p>VehicleId</p></div></div><div class="col-sm-2"><div class="form-group"><p>Towards</p></div></div><div class="col-sm-2"><div class="form-group"><p>Time To Station (mins)</b></p></div></div>     </div>');
 
         // now to customise the AJAX of the busstops for a specific stop
-        
         var results = data;  // convert JSON to an object for sorting
         results.sort(function(a,b){
           return a.timeToStation-b.timeToStation;
         });
-
+        console.log(results);
         var linesCount = 0;
 
         for (i=0; i<results.length; i++) {
