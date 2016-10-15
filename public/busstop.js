@@ -42,9 +42,8 @@ $( "#clickBus1" ).click(function() {
         results.sort(function(a,b){
           return a.timeToStation-b.timeToStation;
         });
-        console.log(results);
-        var linesCount = 0;
 
+        var linesCount = 0;
         for (i=0; i<results.length; i++) {
           if(results[i].towards == myStation){
             if(linesCount<6){
